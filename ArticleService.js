@@ -20,7 +20,7 @@ export function getArticle(articleId) {
   return fetch(`${BASE_URL}/articles/${articleId}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error(`HTTP Error: $(response.status}`);
+        throw new Error(`HTTP Error: ${response.status}`);
       }
 
       return response.json();
@@ -65,6 +65,22 @@ export function patchArticle(articleId, title, content, image) {
       content,
       image,
     }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+}
+
+export function deleteArticle(articleId) {
+  return fetch(`${BASE_URL}/articles/${articleId}`, {
+    method: "DELETE",
   })
     .then((response) => {
       if (!response.ok) {
