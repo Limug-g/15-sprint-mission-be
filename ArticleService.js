@@ -5,11 +5,25 @@ export function getArticleList(page, pageSize, keyword) {
 
   return fetch(url)
     .then((response) => {
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error(`HTTP Error: ${response.status}`);
       }
 
-      return response.json()
+      return response.json();
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+}
+
+export function getArticle(articleId) {
+  return fetch(`${BASE_URL}/articles/${articleId}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error: $(response.status}`);
+      }
+
+      return response.json();
     })
     .catch((error) => {
       console.error(error.message);
