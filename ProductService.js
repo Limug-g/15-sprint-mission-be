@@ -35,3 +35,26 @@ export async function getProduct(productId) {
     console.error(error.message);
   }
 }
+
+export async function createProduct(name, description, price, tags, images) {
+  const url = `${BASE_URL}/products`;
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, description, price, tags, images }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log(error.message);
+  }
+}

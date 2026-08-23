@@ -3,9 +3,9 @@ import {
   getArticle,
   createArticle,
   patchArticle,
-  deleteArticle
+  deleteArticle,
 } from "./ArticleService.js";
-import { getProductList, getProduct } from "./ProductService.js";
+import { getProductList, getProduct, createProduct } from "./ProductService.js";
 
 // getArticleList(1, 10, "").then((data) => {
 //   console.log(data);
@@ -41,6 +41,16 @@ import { getProductList, getProduct } from "./ProductService.js";
 //   console.log(data);
 // })
 
-getProduct(4279).then((data) => {
-  console.log(data);
-});
+// getProduct(4279).then((data) => {
+//   console.log(data);
+// });
+
+const product = await createProduct(
+  "스프린트 미션3 테스트 상품",
+  "createProduct 테스트입니다.",
+  15000,
+  ["테스트", "미션3"],
+  ["https://picsum.photos/300"],
+);
+
+console.log(product);
