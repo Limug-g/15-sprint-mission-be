@@ -29,3 +29,27 @@ export function getArticle(articleId) {
       console.error(error.message);
     });
 }
+
+export function createArticle(title, content, image) {
+  return fetch(`${BASE_URL}/articles`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      title,
+      content,
+      image,
+    }),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .catch((error) => {
+      console.error(error.message);
+    });
+}
