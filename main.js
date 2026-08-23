@@ -5,7 +5,7 @@ import {
   patchArticle,
   deleteArticle
 } from "./ArticleService.js";
-import { getProductList } from "./ProductService.js";
+import { getProductList, getProduct } from "./ProductService.js";
 
 // getArticleList(1, 10, "").then((data) => {
 //   console.log(data);
@@ -37,6 +37,10 @@ import { getProductList } from "./ProductService.js";
 //   console.log(data);
 // })
 
-getProductList(1, 10, '').then((data) => {
+// getProductList(1, 10, '').then((data) => {
+//   console.log(data);
+// })
+
+getProduct(4279).then((data) => {
   console.log(data);
-})
+});

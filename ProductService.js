@@ -17,3 +17,21 @@ export async function getProductList(page, pageSize, keyword) {
     console.error(error.message);
   }
 }
+
+export async function getProduct(productId) {
+  const url = `${BASE_URL}/products/${productId}`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
