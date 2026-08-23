@@ -5,15 +5,16 @@ import {
   patchArticle,
   deleteArticle
 } from "./ArticleService.js";
+import { getProductList } from "./ProductService.js";
 
 // getArticleList(1, 10, "").then((data) => {
 //   console.log(data);
 // });
 
-getArticle(6957)
-// .then((data) => {
-//   console.log(data);
-// });
+// getArticle(6957)
+// // .then((data) => {
+// //   console.log(data);
+// // });
 
 // createArticle(
 //   "스프린트 미션3 테스트 게시글",
@@ -35,3 +36,7 @@ getArticle(6957)
 // deleteArticle(6957).then((data) => {
 //   console.log(data);
 // })
+
+getProductList(1, 10, '').then((data) => {
+  console.log(data);
+})
