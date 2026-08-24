@@ -10,6 +10,7 @@ import {
   getProduct,
   createProduct,
   patchProduct,
+  deleteProduct
 } from "./ProductService.js";
 
 // getArticleList(1, 10, "").then((data) => {
@@ -60,13 +61,19 @@ import {
 
 // console.log(product);
 
-const product = await patchProduct(
-  4305,
-  "스프린트 미션3 수정 상품",
-  "patchProduct 테스트입니다.",
-  20000,
-  ["수정", "미션3"],
-  ["https://picsum.photos/400"],
-);
+// const product = await patchProduct(
+//   4305,
+//   "스프린트 미션3 수정 상품",
+//   "patchProduct 테스트입니다.",
+//   20000,
+//   ["수정", "미션3"],
+//   ["https://picsum.photos/400"],
+// );
 
-console.log(product);
+// console.log(product);
+
+// const result = await deleteProduct(4306);
+
+// console.log(result);
+
+await getProduct(4306);

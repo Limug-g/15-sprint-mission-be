@@ -88,3 +88,23 @@ export async function patchProduct(
     console.error(error.message);
   }
 }
+
+export async function deleteProduct(productId) {
+  const url = `${BASE_URL}/products/${productId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "DELETE",
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}
