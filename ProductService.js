@@ -58,3 +58,33 @@ export async function createProduct(name, description, price, tags, images) {
     console.log(error.message);
   }
 }
+
+export async function patchProduct(
+  productId,
+  name,
+  description,
+  price,
+  tags,
+  images,
+) {
+  const url = `${BASE_URL}/products/${productId}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, description, price, tags, images }),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(error.message);
+  }
+}

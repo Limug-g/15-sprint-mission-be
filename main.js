@@ -5,7 +5,12 @@ import {
   patchArticle,
   deleteArticle,
 } from "./ArticleService.js";
-import { getProductList, getProduct, createProduct } from "./ProductService.js";
+import {
+  getProductList,
+  getProduct,
+  createProduct,
+  patchProduct,
+} from "./ProductService.js";
 
 // getArticleList(1, 10, "").then((data) => {
 //   console.log(data);
@@ -45,12 +50,23 @@ import { getProductList, getProduct, createProduct } from "./ProductService.js";
 //   console.log(data);
 // });
 
-const product = await createProduct(
-  "스프린트 미션3 테스트 상품",
-  "createProduct 테스트입니다.",
-  15000,
-  ["테스트", "미션3"],
-  ["https://picsum.photos/300"],
+// const product = await createProduct(
+//   "스프린트 미션3 테스트 상품",
+//   "createProduct 테스트입니다.",
+//   15000,
+//   ["테스트", "미션3"],
+//   ["https://picsum.photos/300"],
+// );
+
+// console.log(product);
+
+const product = await patchProduct(
+  4305,
+  "스프린트 미션3 수정 상품",
+  "patchProduct 테스트입니다.",
+  20000,
+  ["수정", "미션3"],
+  ["https://picsum.photos/400"],
 );
 
 console.log(product);
