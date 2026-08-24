@@ -17,10 +17,9 @@ import {
 //   console.log(data);
 // });
 
-// getArticle(6957)
-// // .then((data) => {
-// //   console.log(data);
-// // });
+// getArticle(6957).then((data) => {
+//   console.log(data);
+// });
 
 // createArticle(
 //   "스프린트 미션3 테스트 게시글",
@@ -51,7 +50,7 @@ import {
 //   console.log(data);
 // });
 
-// const product = await createProduct(
+// const createdProduct = await createProduct(
 //   "스프린트 미션3 테스트 상품",
 //   "createProduct 테스트입니다.",
 //   15000,
@@ -59,9 +58,9 @@ import {
 //   ["https://picsum.photos/300"],
 // );
 
-// console.log(product);
+// console.log(createdProduct);
 
-// const product = await patchProduct(
+// const patchedProduct = await patchProduct(
 //   4305,
 //   "스프린트 미션3 수정 상품",
 //   "patchProduct 테스트입니다.",
@@ -70,10 +69,8 @@ import {
 //   ["https://picsum.photos/400"],
 // );
 
-// console.log(product);
+// console.log(patchedProduct);
 
 // const result = await deleteProduct(4306);
 
 // console.log(result);
-
-await getProduct(4306);
