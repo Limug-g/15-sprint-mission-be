@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.10.0",
   "engineVersion": "0edf323efd1d98336f3f0a68684b56f689b900d3",
   "activeProvider": "postgresql",
-  "inlineSchema": "// Prisma Client 생성 위치, 제공 DB 정보 선언\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../genterated/prisma\"\n}\n\n//DB연결 설정\ndatasource db {\n  provider = \"postgresql\"\n}\n\n//데이터 스키마 작성\n\n//사용자\nmodel User {\n  id    Int    @id @default(autoincrement())\n  name  String\n  email String @unique\n\n  articles Article[]\n}\n\n//Article 게시글 \nmodel Article {\n  id        Int     @id @default(autoincrement())\n  title     String\n  content   String\n  published Boolean @default(false)\n\n  //relation\n  writer    User     @relation(fields: [writerId], references: [id], onDelete: Cascade)\n  writerId  Int\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
+  "inlineSchema": "// Prisma Client 생성 위치, 제공 DB 정보 선언\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../generated/prisma\"\n}\n\n//DB연결 설정\ndatasource db {\n  provider = \"postgresql\"\n}\n\n//데이터 스키마 작성\n\n//사용자\nmodel User {\n  id    Int    @id @default(autoincrement())\n  name  String\n  email String @unique\n\n  articles Article[]\n}\n\n//Article 게시글 \nmodel Article {\n  id        Int     @id @default(autoincrement())\n  title     String\n  content   String\n  published Boolean @default(false)\n\n  //relation\n  writer    User     @relation(fields: [writerId], references: [id], onDelete: Cascade)\n  writerId  Int\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},

@@ -1,7 +1,7 @@
 // Prisma Client 생성 위치, 제공 DB 정보 선언
 generator client {
   provider = "prisma-client"
-  output   = "../genterated/prisma"
+  output   = "../generated/prisma"
 }
 
 //DB연결 설정
