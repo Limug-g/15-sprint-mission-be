@@ -1,6 +1,6 @@
-import { defineCofig, env } from 'prisma/config';
+import { defineConfig, env } from 'prisma/config';
 
-export default defineCofig({
+export default defineConfig({
   schema: 'prisma/schema.prisma',
   migration: {
     path: 'prisma/migration',

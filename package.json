@@ -9,6 +9,9 @@
   "scripts": {
     "dev": "node --env-file=./env/.env.development --watch src/server.js",
     "dev:clean": "lsof -ti:5001 | xargs kill -9 2>/dev/null; npm run dev",
+    "prisma:generate": "dotenv -e ./env/.env.development -- npx prisma generate",
+    "prisma:migrate": "dotenv -e ./env/.env.development -- npx prisma migrate dev",
+    "prisma:studio": "dotenv -e ./env/.env.development -- npx prisma studio",
     "seed": "node --env-file=./env/.env.development src/scripts/dataSeed.js",
     "lint": "eslint \"src/**/*.js\"",
     "format": "prettier --write .",
@@ -25,7 +28,7 @@
     "dotenv-cli": "^11.0.0",
     "express": "^5.2.1",
     "mongoose": "^9.9.3",
-    "prisma": "^8.0.0-rc.12",
+    "prisma": "^7.10.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {
