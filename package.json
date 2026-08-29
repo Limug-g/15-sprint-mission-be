@@ -6,6 +6,16 @@
   "author": "",
   "type": "module",
   "main": "index.js",
+  "imports": {
+    "#generated/*": "./generated/*",
+    "#config": "./src/config/config.js",
+    "#db/*": "./src/db/*",
+    "#constants": "./src/constants/index.js",
+    "#errors": "./src/errors/index.js",
+    "#middlewares": "./src/middlewares/index.js",
+    "#repositories": "./src/repositories/index.js",
+    "#utils": "./src/utils/index.js"
+  },
   "scripts": {
     "dev": "node --env-file=./env/.env.development --watch src/server.js",
     "dev:clean": "lsof -ti:5001 | xargs kill -9 2>/dev/null; npm run dev",
