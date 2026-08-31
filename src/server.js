@@ -3,7 +3,7 @@ import { router } from './routes/index.js';
 import { cors } from './middleware/cors.js';
 import { errorHandler } from './error/error-handler.js';
 import { config } from './config/config.js';
-import { connectDB } from './db/index.js';
+// import { connectDB } from './db/index.js';
 
 console.log('1. import ok');
 const app = express();
@@ -12,9 +12,9 @@ const PORT = config.PORT;
 console.log('2. config ok');
 
 //MongoDB 불러오기
-await connectDB();
+// await connectDB(); -> PostgreSQL로 변경
 
- console.log('3. MongoDB ok');
+ console.log('3. prisma ok');
 
 //기본 미들웨어
 app.use(express.json());

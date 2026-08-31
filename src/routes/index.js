@@ -2,6 +2,8 @@
 
 import express from 'express';
 import { itemRouter } from './Item.route.js';
+import { registerItemRouter } from './registerItem.route.js';
+import { articleRouter } from './articles.routes.js';
 
 export const router = express.Router();
 
@@ -15,4 +17,5 @@ router.get('/', (req, res) => {
 
 //기능별 router 연결하기 -> item.router
 router.use('/items', itemRouter);
-
+router.use('/registration', registerItemRouter);
+router.use('/articles', articleRouter);
