@@ -9,6 +9,8 @@ export const errorHandler = (err, req, res, next) => {
       message: err.message,
     });
   } 
+  console.error(err)
+
   //Edge case error 대응
   return res.status(500).json({
     success: false,

@@ -3,6 +3,7 @@ import { articleRepository } from '../repository/articles.repository.js';
 import { NotFoundException } from '../error/Not-found-excep.js';
 import { ERROR_MESSAGE, HTTP_STATUS } from '#constants';
 import { BadRequestException } from '../error/Bad-request-excep.js';
+import { articleCommentsRouter } from './articleComments.routes.js';
 
 export const articleRouter = express.Router();
 
@@ -67,3 +68,5 @@ articleRouter.delete('/:articleId', async (req, res) => {
 
   return res.sendStatus(HTTP_STATUS.NO_CONTENT);
 });
+
+articleRouter.use('/:articleId/comments', articleCommentsRouter);

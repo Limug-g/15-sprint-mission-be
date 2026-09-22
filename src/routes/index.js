@@ -17,5 +17,5 @@ router.get('/', (req, res) => {
 
 //기능별 router 연결하기 -> item.router
 router.use('/items', itemRouter);
-router.use('/registration', registerItemRouter);
+// router.use('/registration', registerItemRouter);
 router.use('/articles', articleRouter);

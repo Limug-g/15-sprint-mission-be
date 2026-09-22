@@ -1,5 +1,5 @@
 import express from 'express';
-import { router } from './routes/index.js';
+import { router as apirouter } from './routes/index.js';
 import { cors } from './middleware/cors.js';
 import { errorHandler } from './error/error-handler.js';
 import { config } from './config/config.js';
@@ -25,7 +25,7 @@ console.log('4. basic middleware ok');
 
 // 라우트를 미들웨어로 등록
 app.use(cors);
-app.use('/', router);
+app.use('/api', apirouter);
 
 console.log('5. router ok');
 
