@@ -23,7 +23,7 @@ function findAll({
   published,
   page = 1,
   limit = 10,
-  include = ARTICLE_WRITER_SELECT = {}}) {
+  include = ARTICLE_WRITER_SELECT} = {}) {
   return prisma.article.findMany({
     where: typeof published === 'boolean' ? { published } : {},
     skip: (page - 1) * limit,
