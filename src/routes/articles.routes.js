@@ -9,14 +9,14 @@ export const articleRouter = express.Router();
 
 //GET 전체 게시글 조회
 articleRouter.get('/', async (req, res) => {
-  const articles = await articleRepository.findAll({ writer: true });
+  const articles = await articleRepository.findAll();
   return res.json(articles);
 });
 
 //특정 게시글 조회
 articleRouter.get('/:articleId', async (req, res) => {
   const { articleId } = req.params;
-  const article = await articleRepository.findById(articleId, { writer: true });
+  const article = await articleRepository.findById(articleId);
 
   if (!article) {
     throw new NotFoundException(ERROR_MESSAGE.POST_NOT_FOUND);
