@@ -1,7 +1,15 @@
 import { prisma } from '#db/prisma.js';
 
 function create(data) {
-  return prisma.articleComment.create({ data });
+  return prisma.articleComment.create({
+    data,
+    select: {
+      id: true,
+      content: true,
+      createdAt: true,
+      writer: { select: { id: true, name: true } },
+    },
+  });
 }
 
 function findById(commentId, include = undefined) {
