@@ -22,7 +22,12 @@ async function findByArticleId({ articleId, cursor, limit = 10 } = {}) {
       skip: 1,
     }),
     orderBy: [{ createdAt: 'desc' }, { id: 'desc' }],
-    select: { id: true, content: true, createdAt: true },
+    select: {
+      id: true,
+      content: true,
+      createdAt: true,
+      writer: { select: { id: true, name: true } },
+    },
   });
   const hasNext = comments.length > limit;
   const data = hasNext ? comments.slice(0, limit) : comments;
