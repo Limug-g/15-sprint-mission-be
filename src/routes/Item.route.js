@@ -10,7 +10,12 @@ export const itemRouter = express.Router();
 // GET 목록 조회
 itemRouter.get('/', async (req, res, next) => {
   try {
-    const { page = 1, limits = 10, orderBy = 'recent', keyword = '' } = req.query;
+    const {
+      page = 1,
+      limits = 10,
+      orderBy = 'recent',
+      keyword = '',
+    } = req.query;
 
     const [itemLists, totalCount] = await itemRepository.findMany({
       page,
@@ -60,15 +65,21 @@ itemRouter.post('/', async (req, res, next) => {
     const { name, description, price, tags } = req.body ?? {};
 
     if (!name || !description || price === undefined) {
-      throw new BadRequestException('상품명, 상세설명, 가격은 필수 항목입니다.');
+      throw new BadRequestException(
+        '상품명, 상세설명, 가격은 필수 항목입니다.',
+      );
     }
 
     if (name.length <= 0 || name.length > 10) {
-      throw new BadRequestException('상품명은 1자 이상 10자 이내로 작성해주세요');
+      throw new BadRequestException(
+        '상품명은 1자 이상 10자 이내로 작성해주세요',
+      );
     }
 
     if (description.length < 10 || description.length >= 100) {
-      throw new BadRequestException('상품설명은 10자 이상 100자 이내로 작성해주세요');
+      throw new BadRequestException(
+        '상품설명은 10자 이상 100자 이내로 작성해주세요',
+      );
     }
 
     if (price < 0 || typeof price !== 'number') {
@@ -84,7 +95,12 @@ itemRouter.post('/', async (req, res, next) => {
       throw new ConflictException('동일한 이름의 상품이 존재합니다.');
     }
 
-    const newItem = await itemRepository.create({ name, description, price, tags });
+    const newItem = await itemRepository.create({
+      name,
+      description,
+      price,
+      tags,
+    });
 
     res.status(201).json({
       success: true,
@@ -109,11 +125,18 @@ itemRouter.patch('/:itemId', async (req, res, next) => {
     const { name, description, price, tags } = req.body ?? {};
 
     if (name !== undefined && (name.length <= 0 || name.length > 10)) {
-      throw new BadRequestException('상품명은 1자 이상 10자 이내로 작성해주세요');
+      throw new BadRequestException(
+        '상품명은 1자 이상 10자 이내로 작성해주세요',
+      );
     }
 
-    if (description !== undefined && (description.length < 10 || description.length >= 100)) {
-      throw new BadRequestException('상품설명은 10자 이상 100자 이내로 작성해주세요');
+    if (
+      description !== undefined &&
+      (description.length < 10 || description.length >= 100)
+    ) {
+      throw new BadRequestException(
+        '상품설명은 10자 이상 100자 이내로 작성해주세요',
+      );
     }
 
     if (price !== undefined && (price <= 0 || typeof price !== 'number')) {

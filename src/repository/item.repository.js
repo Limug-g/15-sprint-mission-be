@@ -6,7 +6,7 @@ function findMany({ page = 1, limits = 10, orderBy = 'recent', keyword = '' }) {
   const where = keyword
     ? {
         OR: [
-          { name: { contains: keyword, mode: 'insentive' } },
+          { name: { contains: keyword, mode: 'insensitive' } },
           { description: { contains: keyword, mode: 'insensitive' } },
         ],
       }
