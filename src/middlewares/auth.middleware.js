@@ -3,13 +3,13 @@ import {
   refreshTokens,
   setAuthCookies,
   shouldRefreshToken,
-  verifyAccessToken,
+  verifyToken,
 } from '#utils';
 import { UnAuthorizedException } from '../errors/UnAuthorized-excep.js';
 
 export async function authMiddleware(req, res, next) {
   const { accessToken, refreshToken } = req.cookies;
-  const payload = verifyAccessToken(accessToken, 'access'); //->secret이 추가 되었음
+  const payload = verifyToken(accessToken, 'access'); //->secret이 추가 되었음
 
   if (!payload || !Number.isInteger(payload.userId)) {
     throw new UnAuthorizedException(ERROR_MESSAGE.ACCESS_TOKEN_REQUIRED);

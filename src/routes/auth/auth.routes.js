@@ -36,7 +36,7 @@ authRouter.post('/signup', validate('body', signUpSchema), async (req, res) => {
 });
 
 //로그인 라우터
-authRouter.post('/login', validate('body', loginSchema), async (req, res) => {
+authRouter.post('/signin', validate('body', loginSchema), async (req, res) => {
   const { email, password } = req.validated.body;
 
   const user = await usersRepository.findByEmail(email);
