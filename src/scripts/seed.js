@@ -3,8 +3,11 @@ import { faker } from '@faker-js/faker';
 import { PrismaClient } from '#generated/prisma/client.ts';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { assertSafeSeedTarget, resetBlogData } from './seed-safety.js';
+import { hashPassword } from '#utils';
 
 const NUM_USERS_TO_CREATE = 10;
+
+const password = await hashPassword('codeit1234!');
 
 const makeUserInput = (index) => ({
   email: `user${index}@example.com`,
@@ -40,9 +43,10 @@ const makeProductCommentInput = (itemId, writerId) => ({
 
 async function seed(prisma) {
   //1 userData 생성 시 조건
-  const userData = Array.from({ length: NUM_USERS_TO_CREATE }, (_, index) =>
-    makeUserInput(index + 1),
-  );
+  const userData = Array.from({ length: NUM_USERS_TO_CREATE }, (_, index) => ({
+    ...makeUserInput(index + 1),
+    password,
+  }));
 
   // 1-1. 부모 User 생성
   const users = await prisma.user.createManyAndReturn({ data: userData });
@@ -78,8 +82,10 @@ async function seed(prisma) {
 
   // Item 생성
   const NUM_ITEMS_TO_CREATE = 20; // 원하는 개수로 조절
-  const itemData = Array.from({ length: NUM_ITEMS_TO_CREATE }, () =>
-    makeItemInput(),
+  const itemData = Array.from({ length: NUM_ITEMS_TO_CREATE }, (_, i) =>
+    ({...makeItemInput(),
+      writerId: users[i % users.length].id
+    })
   );
   const items = await prisma.item.createManyAndReturn({ data: itemData });
 
@@ -117,7 +123,9 @@ async function main(prisma) {
 
   console.log(`${result.userCount}명의 사용자가 생성되었습니다.`);
   console.log(`${result.articleCount}개의 게시글이 생성되었습니다.`);
-  console.log(`${result.articleCommentCount}개의 자유게시판 댓글이 생성되었습니다.`);
+  console.log(
+    `${result.articleCommentCount}개의 자유게시판 댓글이 생성되었습니다.`,
+  );
   console.log(`${result.itemCount}개의 상품이 생성되었습니다.`);
   console.log(
     `${result.productCommentCount}개의 중고마켓 댓글이 생성되었습니다.`,

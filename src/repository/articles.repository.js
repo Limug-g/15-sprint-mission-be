@@ -10,12 +10,16 @@ function create(data) {
   return prisma.article.create({ data });
 }
 
-function findById(articleId, include = ARTICLE_WRITER_SELECT) {
+function findById(articleId, writerId) {
   return prisma.article.findUnique({
     where: {
       id: Number(articleId),
     },
-    ...(include && { include }), // 관계된 writer= User 정보를 불러오는 것
+    include: {
+      writer: { select: { id: true, name: true } },
+      _count: { select: { articleLikes: true } },
+      articleLikes: writerId ? { where: writerId } : false,
+    },
   });
 }
 
@@ -23,7 +27,8 @@ function findAll({
   published,
   page = 1,
   limit = 10,
-  include = ARTICLE_WRITER_SELECT} = {}) {
+  include = ARTICLE_WRITER_SELECT,
+} = {}) {
   return prisma.article.findMany({
     where: typeof published === 'boolean' ? { published } : {},
     skip: (page - 1) * limit,

@@ -15,6 +15,8 @@ const envSchema = z.object({
       (url) => url.startsWith('postgresql:') || url.startsWith('postgres:'),
       'PostgreSQL 연결 URL이어야 합니다.',
     ),
+  JWT_ACCESS_SECRET: z.string().min(32),
+  JWT_REFRESH_SECRET: z.string().min(32),
 });
 
 const parseEnvschema = () => {
@@ -24,6 +26,8 @@ const parseEnvschema = () => {
       NODE_ENV: process.env.NODE_ENV,
       PORT: process.env.PORT,
       DATABASE_URL: process.env.DATABASE_URL,
+      JWT_ACCESS_SECRET: process.env.JWT_ACCESS_SECRET,
+      JWT_REFRESH_SECRET: process.env.JWT_REFRESH_SECRET,
     });
   } catch (error) {
     if (error instanceof z.ZodError) {

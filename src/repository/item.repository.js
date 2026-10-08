@@ -23,8 +23,17 @@ function findMany({ page = 1, limits = 10, orderBy = 'recent', keyword = '' }) {
     prisma.item.count({ where }),
   ]);
 }
-function findById(itemId) {
-  return prisma.item.findUnique({ where: { id: Number(itemId) } });
+function findById(itemId, userId) {
+  return prisma.item.findUnique({
+    where: { id: Number(itemId) },
+    include: {
+      _count: { select: { itemFavorites: true } },
+      //_count는 prisma에서 제공하는 전용필드,
+      // 개수를 가져오고 싶을때 내장 기능을 사용하면 된다.
+      itemFavorites: userId ? { where: { id: userId } } : false,
+      //유저가 현재 좋아요를 클릭한 상품이 뭔지 보여줌
+    },
+  });
 }
 
 function findByName(name) {

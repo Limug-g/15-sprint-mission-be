@@ -1,4 +1,5 @@
 import express from 'express';
+import cookieParser from 'cookie-parser';
 import { router as apirouter } from './routes/index.js';
 import { cors } from './middleware/cors.js';
 import { errorHandler } from './error/error-handler.js';
@@ -10,14 +11,11 @@ const app = express();
 const PORT = config.PORT;
 
 console.log('2. config ok');
-
-//MongoDB 불러오기
-// await connectDB(); -> PostgreSQL로 변경
-
- console.log('3. prisma ok');
+console.log('3. prisma ok');
 
 //기본 미들웨어
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
