@@ -24,7 +24,7 @@ function findByEmail(email) {
 }
 
 function findAll() {
-  prisma.user.findMany();
+  return prisma.user.findMany();
 }
 
 function update(userId, data) {
@@ -54,7 +54,7 @@ function findItemsWithuserId(userId) {
   });
 }
 
-export const UserRepository = {
+export const usersRepository = {
   create,
   findById,
   findByEmail,

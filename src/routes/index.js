@@ -2,8 +2,10 @@
 
 import express from 'express';
 import { itemRouter } from './Item.route.js';
-import { registerItemRouter } from './registerItem.route.js';
+// import { registerItemRouter } from './registerItem.route.js';
 import { articleRouter } from './articles.routes.js';
+import { authRouter } from './auth/auth.routes.js';
+import { userRouter } from './users.routes.js';
 
 export const router = express.Router();
 
@@ -19,3 +21,5 @@ router.get('/', (req, res) => {
 router.use('/items', itemRouter);
 // router.use('/registration', registerItemRouter);
 router.use('/articles', articleRouter);
+router.use('/auth', authRouter);
+router.use('/users', userRouter);

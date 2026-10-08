@@ -1,8 +1,8 @@
 import express from 'express';
-import { itemRepository } from '../repository/item.repository.js';
-import { BadRequestException } from '../error/Bad-request-excep.js';
-import { ConflictException } from '../error/Conflict-excep.js';
-import { NotFoundException } from '../error/Not-found-excep.js';
+import { itemRepository } from '../repositories/item.repository.js';
+import { BadRequestException } from '../errors/Bad-request-excep.js';
+import { ConflictException } from '../errors/Conflict-excep.js';
+import { NotFoundException } from '../errors/Not-found-excep.js';
 import { productCommentsRouter } from './productComments.routes.js';
 
 export const itemRouter = express.Router();

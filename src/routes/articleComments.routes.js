@@ -1,8 +1,8 @@
 import express from 'express';
-import { articleCommentsRepository } from '../repository/articleComments.repository.js';
+import { articleCommentsRepository } from '../repositories/articleComments.repository.js';
 import { ERROR_MESSAGE, HTTP_STATUS } from '#constants';
-import { NotFoundException } from '../error/Not-found-excep.js';
-import { BadRequestException } from '../error/Bad-request-excep.js';
+import { NotFoundException } from '../errors/Not-found-excep.js';
+import { BadRequestException } from '../errors/Bad-request-excep.js';
 
 export const articleCommentsRouter = express.Router({ mergeParams: true });
 

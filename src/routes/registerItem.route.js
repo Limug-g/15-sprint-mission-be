@@ -1,8 +1,6 @@
 import express from 'express';
 import { Item } from '../models/item.model.js';
-import { HttpException } from '../error/http-exception.js';
-import { BadRequestException } from '../error/Bad-request-excep.js';
-import { ConflictException } from '../error/Conflict-excep.js';
+import { ConflictException } from '../errors/Conflict-excep.js';
 
 export const registerItemRouter = express.Router();
 

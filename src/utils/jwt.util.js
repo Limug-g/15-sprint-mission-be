@@ -1,4 +1,5 @@
 import { config } from '#config';
+import { usersRepository } from '#repositories';
 import jwt from 'jsonwebtoken';
 
 export function generateAccessToken(user) {

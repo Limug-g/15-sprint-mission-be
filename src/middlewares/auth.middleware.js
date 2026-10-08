@@ -5,7 +5,7 @@ import {
   shouldRefreshToken,
   verifyAccessToken,
 } from '#utils';
-import { UnAuthorizedException } from '../error/UnAuthorized-excep.js';
+import { UnAuthorizedException } from '../errors/UnAuthorized-excep.js';
 
 export async function authMiddleware(req, res, next) {
   const { accessToken, refreshToken } = req.cookies;

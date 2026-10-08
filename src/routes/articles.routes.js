@@ -1,8 +1,8 @@
 import express from 'express';
-import { articleRepository } from '../repository/articles.repository.js';
-import { NotFoundException } from '../error/Not-found-excep.js';
+import { articleRepository } from '../repositories/articles.repository.js';
+import { NotFoundException } from '../errors/Not-found-excep.js';
 import { ERROR_MESSAGE, HTTP_STATUS } from '#constants';
-import { BadRequestException } from '../error/Bad-request-excep.js';
+import { BadRequestException } from '../errors/Bad-request-excep.js';
 import { articleCommentsRouter } from './articleComments.routes.js';
 
 export const articleRouter = express.Router();

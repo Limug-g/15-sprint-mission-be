@@ -1,8 +1,8 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import { router as apirouter } from './routes/index.js';
-import { cors } from './middleware/cors.js';
-import { errorHandler } from './error/error-handler.js';
+import { cors } from './middlewares/cors.js';
+import { errorHandler } from './errors/error-handler.js';
 import { config } from './config/config.js';
 // import { connectDB } from './db/index.js';
 
