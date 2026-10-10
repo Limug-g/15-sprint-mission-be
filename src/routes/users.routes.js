@@ -41,6 +41,9 @@ userRouter.post('/', async (req, res) => {
   res.status(HTTP_STATUS.CREATED).json({ success: true, data: user });
 });
 
+user
+
+
 userRouter.patch('/:userId', async (req, res) => {
   const { userId } = req.params;
   const { email, name } = req.body ?? {};

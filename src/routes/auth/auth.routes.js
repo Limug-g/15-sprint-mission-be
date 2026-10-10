@@ -56,3 +56,9 @@ authRouter.post('/signin', validate('body', loginSchema), async (req, res) => {
   const { password: _, ...rest } = user;
   return res.status(HTTP_STATUS.OK).json(rest);
 });
+
+authRouter.post('/logout', (req, res) => {
+  res.clearCookie('accessToken', { path: '/' });
+  res.clearCookie('refreshToken', { path: '/' });
+  res.sendStatus(204);
+});

@@ -34,10 +34,12 @@ export function verifyToken(token, tokenType = 'access') {
     tokenType === 'access'
       ? config.JWT_ACCESS_SECRET
       : config.JWT_REFRESH_SECRET;
+      //tokenType에 따라 시크릿키를 선택적으로 넣어줌
   try {
     return jwt.verify(token, secret, {
       algorithms: ['HS256'],
     });
+    //secret을 선택적으로 받고 jwt의 verify로 검증
   } catch {
     return null;
   }

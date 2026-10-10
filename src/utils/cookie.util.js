@@ -19,3 +19,4 @@ export function setAuthCookies(res, { accessToken, refreshToken }) {
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7일
   });
 }
+//-> 응답에 쿠키헤더를 심어주는 과정 setAuthCookies

@@ -8,7 +8,7 @@ export const ERROR_MESSAGE = {
   ITEM_NOT_FOUND: '상품을 찾을 수 없습니다.',
   TITLE_AND_WRITERID_ID_REQUIRED: 'title과 wrtierId는 필수입니다.',
   ACCESS_TOKEN_REQUIRED: '유효한 Access Token이 필요합니다.',
-  VALIDATION_FAILED: 'Validation failed',
+  VALIDATION_FAILED: '로그인에 실패했습니다.',
   INVALID_CREDENTIALS: '이메일 또는 비밀번호가 일치하지 않습니다.',
   UPDATE_USER_REQUIRED: '수정할 email 또는 name이 필요합니다.',
   UPDATE_ARTICLE_REQUIRED: '수정할 게시글 필드가 필요합니다.',
